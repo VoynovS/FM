@@ -26,16 +26,22 @@ void createFile(std::string& str) {
 }
 
 //Delete file
-void deleteFile(char *a) {
+void deleteFile(std::string& str) {
 	//char oldF[256];
 	char oldF1[256];
 	//std::cin >> oldF;
 	std::cin >> oldF1;
-	std::string combined = std::string(a) + oldF1;
+	std::string combined = std::string(str) + oldF1;
 	const char* result = combined.c_str();
 	//std::getline(cin, b);
 	remove(result);
-
+	std::ofstream check;
+	check.open(result, std::ios::in);
+	if (check.is_open())
+		std::cout << "File not deleted\n";
+	else
+		std::cout << "File deleted\n";
+	
 }
 //Rename file
 void renameFile(char *a) {

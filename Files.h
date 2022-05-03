@@ -10,7 +10,7 @@
 void createFile(std::string& str);
 
 //Delete file
-void deleteFile(char* a);
+void deleteFile(std::string& str);
 
 //Move file
 void renameFile(char* a);

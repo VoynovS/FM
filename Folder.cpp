@@ -78,7 +78,7 @@ void renameFolder() {
 			std::cout << "Folder not removed";
 	}*/
 
-//Remove folder
+//Move folder
 void moveFolder() {
 	char oldF[256];
 	char oldF1[256];

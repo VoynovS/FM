@@ -109,8 +109,19 @@ int main() {
 			break;
 								
 			case 4:
-
+				if (testCF(path) != 0) {
+					cout << "Enter name the file: ";
+					deleteFile(path);
+					system("pause");
+				}
+				else {
+					cout << "The specified path does not exist.\n";
+					system("pause");
+				}
 			break;
+
+			case 5:
+
 
 			default:
 				cout << "Command not found. Try again\n";
