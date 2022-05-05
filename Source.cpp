@@ -4,12 +4,11 @@
 #include "Folder.h"
 #include "Test.h"
 #include "Files.h"
+#include "Check.h"
 using namespace std;
 
-
-
 int main() {
-	setlocale(LC_ALL, "Russian");
+	
 	cout << "Welcome to the File Manager.\nRules for using the file manager:\n";
 	cout << "1. To get started, write down the path to the folder.\n";
 	cout << "2. Syntax for writing a path using an example: c:/folder/ and name.txt\n";
@@ -17,10 +16,7 @@ int main() {
 	cout << "4. Follow the on-screen instructions.\n";
 	cout << "5. To exit, enter the command : exit.\n";
 	system("pause");
-	
-	/*LPCSTR pcstr;
-	string folder = "";
-	pcstr = folder.c_str();*/
+		
 	int num;
 	string path;
 	char a = { '/' };
@@ -45,7 +41,7 @@ int main() {
 		cin >> num;
 		cin.ignore();
 		if (num == 11) {
-			cout << "Are you sure? 1 - yes, 2 - no";
+			cout << "Are you sure? 1 - yes, 2 - no\n";
 			cin >> num;
 			if (num == 1)
 				return 0;
@@ -55,17 +51,18 @@ int main() {
 				else
 					continue;
 		}
-	
-		system("cls");
-		cout << "Enter path to folder:\n";
-		getline(cin, path);
-		last = path[path.length() - 1];
-		cout << last << endl; //del
-		system("pause");
-		if (last != a && last != b) {
-			cout << "THE specified path does not exist.\n";
+		
+		if (num < 12 && num > 0 && num != 11) {
+			system("cls");
+			cout << "Enter path to folder:\n";
+			getline(cin, path);
+			last = path[path.length() - 1];
 			system("pause");
-			continue;
+			if (last != a && last != b) {
+				cout << "THE specified path does not exist.\n";
+				system("pause");
+				continue;
+			}
 		}
 
 		switch (num) {
@@ -83,8 +80,7 @@ int main() {
 			break;
 
 			case 2:
-			if (testCFl(path) != 0) {
-				cout << "Enter name the file: ";
+			if (testCFl(path) != 0) {				
 				createFile(path);
 				cout << "File created!\n";
 				system("pause");
@@ -110,7 +106,7 @@ int main() {
 								
 			case 4:
 				if (testCFl(path) != 0) {
-					cout << "Enter name the file: ";
+					
 					deleteFile(path);
 					system("pause");
 				}
@@ -164,19 +160,42 @@ int main() {
 					system("pause");
 				}
 				break;
+			case 9:
+				if (testCFl(path) != 0) {
+
+					writeFile(path);
+					system("pause");
+				}
+				else {
+					cout << "The specified path does not exist.\n";
+					system("pause");
+				}
+				break;
+			case 10:
+				if (testCFl(path) != 0) {
+
+					readFile(path);
+					system("pause");
+				}
+				else {
+					cout << "The specified path does not exist.\n";
+					system("pause");
+				}
+				break;
+
+			case 11:
+				cout << "Are you sure? 1 - yes, 2 - no\n";
+				cin >> num;
+				if (num == 1)
+					return 0;
+				else
+					continue;
 
 			default:
 				cout << "Command not found. Try again\n";
 				system("pause");
-			break;
-
-			
-				
-								
-		}
-		
+			break;								
+		}		
 	} while (num != 11);
-
-
 	return 0;
 }

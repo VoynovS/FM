@@ -14,10 +14,9 @@
 }*/
 
 void createFile(std::string& str) {
-	//char oldF[256];
-	char oldF1[256];
-	//std::cin >> oldF;
-	std::cin >> oldF1;
+	std::cout << "Enter name the file: ";
+	std::string oldF1;
+	getline(std::cin, oldF1);	
 	std::string combined = std::string(str) + oldF1;
 	//const char* result = combined.c_str();
 	std::ofstream f;
@@ -27,13 +26,11 @@ void createFile(std::string& str) {
 
 //Delete file
 void deleteFile(std::string& str) {
-	//char oldF[256];
-	char oldF1[256];
-	//std::cin >> oldF;
-	std::cin >> oldF1;
+	std::cout << "Enter name the file: ";
+	std::string oldF1; //Сделать проверку на наличие файла в папке
+	getline(std::cin, oldF1);
 	std::string combined = std::string(str) + oldF1;
 	const char* result = combined.c_str();
-	//std::getline(cin, b);
 	remove(result);
 	std::ofstream check;
 	check.open(result, std::ios::in);
@@ -43,15 +40,16 @@ void deleteFile(std::string& str) {
 		std::cout << "File deleted\n";
 	
 }
+
 //Rename file
-void renameFile(std::string& str) {
+void renameFile(std::string str){
 	std::cout << "Enter the file name: ";
 	std::string oldF1;
 	getline(std::cin, oldF1);
 	std::string combined = std::string(str) + oldF1;
 	const char* result = combined.c_str();
-	std::ofstream f;
-	f.open(combined);
+	std::ifstream f;
+	f.open(result);
 	if (f.is_open()) {
 		f.close();
 		system("pause");
@@ -66,42 +64,47 @@ void renameFile(std::string& str) {
 			std::cout << "File not renamed!" << std::endl;
 	}
 	else {
-		//std::cout << "There is no such folder!\n";
-		f.close();
-
-	}
 		
+		f.close();
+		std::cout << "There is no such file!\n";
+		system("pause");
+	}
 }
+//Rename file
+
 
 //Writing to a file
 void writeFile(std::string str) {
-	//char oldF[256];
-	char oldF1[256];
-	//std::cin >> oldF;
-	std::cin >> oldF1;
-	std::cin.ignore();
+	std::cout << "Enter the file name: ";
+	std::string oldF1;
+	getline(std::cin, oldF1);	
 	std::string combined = std::string(str) + oldF1;
 	const char* result = combined.c_str();
-	std::ofstream wF;
-	wF.open(result, std::ios::app);
+	std::ifstream wF; 
+	std::ofstream wF1;
+	wF.open(result);
 	if (wF.is_open()) {
+		wF.close();
+		wF1.open(result, std::ios::app);
 		std::cout << "File is opened\nEnter the changes in the file: ";
 		std::string str;
 		getline(std::cin, str);
-		wF << str << "\n";
+		wF1 << str; 
+		wF1 << std::endl;
+		wF.close();
 	}
-	else
-		std::cout << "File opening error\n";
-	wF.close();
-	std::cout << std::endl;
+	else {
+		wF.close();
+		std::cout << "File opening error or no such file!\n";
+	}
+	
 }
 
 //Reading from a file
 void readFile(std::string str) {
-	//char oldF[256];
-	char oldF1[256];
-	//std::cin >> oldF;
-	std::cin >> oldF1;
+	std::cout << "Enter the file name: ";
+	std::string oldF1;
+	getline(std::cin, oldF1);	
 	std::string combined = std::string(str) + oldF1;
 	const char* result = combined.c_str();
 	std::ifstream rF;
@@ -113,11 +116,12 @@ void readFile(std::string str) {
 			getline(rF, str);
 			std::cout << str << std::endl;
 		}
+		rF.close();
 	}
-	else
+	else {
+		rF.close();
 		std::cout << "File opening error\n";
-	rF.close();
-	std::cout << std::endl;
+	}	
 }
 
 bool testCFl(std::string str) {
@@ -134,36 +138,12 @@ bool testCFl(std::string str) {
 		return true;
 	}
 	else {
-		//std::cout << "There is no such folder!\n";
 		f.close();
 		remove(result);
 		return false;
 	}
 }
 
-//Test create file
-/*bool testCF(char* a) {
-	char oldF1[256] = "1.txt";
-
-
-	//std::cin >> oldF;
-	//std::cin >> oldF1;
-
-	std::string combined = std::string(a) + oldF1;
-	const char* result = combined.c_str();
-
-	std::ofstream f;
-	f.open(result);
-	if (f.is_open()) {
-		std::cout << "You are in the folder: " << a << std::endl;
-		return true;
-	}
-	else {
-		std::cout << "There is no such folder!\n";
-		return false;
-	}
-	f.close();
-}*/
 
 bool moveFile(std::string& str) {
 	char last;
