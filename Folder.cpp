@@ -45,12 +45,6 @@ void createFolder(std::string& str) {
 	CreateDirectoryA(combined.c_str(), NULL);
 }
 
-
-/*void createFolder(std::string& str) {
-
-	CreateDirectoryA(str.c_str(), NULL);
-}*/
-
 //Delete the folder
 void deleteFolder(std::string& str) {
 	std::string str1;
@@ -61,8 +55,6 @@ void deleteFolder(std::string& str) {
 
 //Rename the folder 
 bool renameFolder(std::string& str) {
-	//char oldF[256];
-	//std::cin >> oldF;
 	std::cout << "Enter the folder name: ";
 	std::string oldF1;
 	getline(std::cin, oldF1);
@@ -82,27 +74,8 @@ bool renameFolder(std::string& str) {
 		std::cout << "Folder renamed!" << std::endl;
 	else
 		std::cout << "Folder not renamed!" << std::endl;
-	
-	
-	
-
-	
-
+	return 0;
 }
-
-//Move folder RABOTAET
-	/*void moveFolder(char oldF[], char newF[]) {
-		if (oldF == newF) {
-			MoveFileA(oldF, newF);
-			if (MoveFileA(oldF, newF) == 0)
-				std::cout << "Folder removed." << std::endl;
-			else
-				std::cout << "Folder not removed." << std::endl;
-
-		}
-		else
-			std::cout << "Folder not removed";
-	}*/
 
 //Move folder
 bool moveFolder(std::string& str) {

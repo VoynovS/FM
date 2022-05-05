@@ -13,13 +13,13 @@ void createFile(std::string& str);
 void deleteFile(std::string& str);
 
 //Move file
-void renameFile(char* a);
+void renameFile(std::string str);
 
 //Writing to a file
-void writeFile(char* a);
+void writeFile(std::string str);
 
 //Reading from a file
-void readFile(char* a);
+void readFile(std::string str);
 
 //Test create file
 //bool testCF(char* a);

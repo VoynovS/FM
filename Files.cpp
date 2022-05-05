@@ -44,31 +44,43 @@ void deleteFile(std::string& str) {
 	
 }
 //Rename file
-void renameFile(char *a) {
-	//char oldF[256];
-	//std::cin >> oldF;
-	char oldF1[256];
-	char newF1[256];
-	std::cin >> oldF1;
-	std::cin >> newF1;
-	std::string combined = std::string(a) + oldF1;
+void renameFile(std::string& str) {
+	std::cout << "Enter the file name: ";
+	std::string oldF1;
+	getline(std::cin, oldF1);
+	std::string combined = std::string(str) + oldF1;
 	const char* result = combined.c_str();
-	std::string combined2 = std::string(a) + newF1;
-	const char* result2 = combined2.c_str();
-	if (rename(result, result2) == 0)
-		std::cout << "File renamed!" << std::endl;
-	else
-		std::cout << "File not renamed." << std::endl;
+	std::ofstream f;
+	f.open(combined);
+	if (f.is_open()) {
+		f.close();
+		system("pause");
+		std::string newF1;
+		std::cout << "Enter a new file name: ";
+		getline(std::cin, newF1);
+		std::string combined2 = std::string(str) + newF1;
+		const char* result2 = combined2.c_str();
+		if (rename(result, result2) == 0)
+			std::cout << "File renamed!" << std::endl;
+		else
+			std::cout << "File not renamed!" << std::endl;
+	}
+	else {
+		//std::cout << "There is no such folder!\n";
+		f.close();
+
+	}
+		
 }
 
 //Writing to a file
-void writeFile(char *a) {
+void writeFile(std::string str) {
 	//char oldF[256];
 	char oldF1[256];
 	//std::cin >> oldF;
 	std::cin >> oldF1;
 	std::cin.ignore();
-	std::string combined = std::string(a) + oldF1;
+	std::string combined = std::string(str) + oldF1;
 	const char* result = combined.c_str();
 	std::ofstream wF;
 	wF.open(result, std::ios::app);
@@ -85,12 +97,12 @@ void writeFile(char *a) {
 }
 
 //Reading from a file
-void readFile(char *a) {
+void readFile(std::string str) {
 	//char oldF[256];
 	char oldF1[256];
 	//std::cin >> oldF;
 	std::cin >> oldF1;
-	std::string combined = std::string(a) + oldF1;
+	std::string combined = std::string(str) + oldF1;
 	const char* result = combined.c_str();
 	std::ifstream rF;
 	rF.open(result);

@@ -210,3 +210,13 @@ void readFl() {
 	std::cout << std::endl;
 }
 
+/*LPCSTR pcstr;
+	string folder = "";
+	pcstr = folder.c_str();
+
+	getline(cin, folder);
+	createFolder(folder);
+
+	getline(cin, folder);
+	deleteFolder(folder);*/
+	/////////////////////////////////////////

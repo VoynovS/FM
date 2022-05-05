@@ -153,6 +153,17 @@ int main() {
 					system("pause");
 				}
 				break;
+			case 8:
+				if (testCFl(path) != 0) {
+
+					renameFile(path);
+					system("pause");
+				}
+				else {
+					cout << "The specified path does not exist.\n";
+					system("pause");
+				}
+				break;
 
 			default:
 				cout << "Command not found. Try again\n";
@@ -161,33 +172,11 @@ int main() {
 
 			
 				
-				/*string qq = "cd M:";
-				//string combined = string(qq) + path;
-				const char* result = qq.c_str();
-				system(result);
-				string tt = "rmdir /s/q TEST/TEST1";
-				const char* result2 = tt.c_str();
-				system(result2);
-				system("pause");*/
-				
+								
 		}
 		
 	} while (num != 11);
 
 
-	
-
-
-	/*LPCSTR pcstr;
-	string folder = "";
-	pcstr = folder.c_str();
-
-	getline(cin, folder);
-	createFolder(folder);
-
-	getline(cin, folder);
-	deleteFolder(folder);*/
-	/////////////////////////////////////////
-	
 	return 0;
 }
