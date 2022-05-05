@@ -70,7 +70,7 @@ int main() {
 
 		switch (num) {
 			case 1:
-			if (testCF(path) != 0) {
+			if (testCFl(path) != 0) {
 				cout << "Enter name the folder: ";
 				createFolder(path);
 				cout << "Folder created!\n";
@@ -83,7 +83,7 @@ int main() {
 			break;
 
 			case 2:
-			if (testCF(path) != 0) {
+			if (testCFl(path) != 0) {
 				cout << "Enter name the file: ";
 				createFile(path);
 				cout << "File created!\n";
@@ -96,8 +96,8 @@ int main() {
 			break;
 
 			case 3:
-			if (testCF(path) != 0) {
-				cout << "Enter name the folder: ";
+			if (testCFl(path) != 0) {
+				cout << "Enter the folder name: ";
 				deleteFolder(path);
 				cout << "Folder deleted!\n"; //Proverit'
 				system("pause");
@@ -109,7 +109,7 @@ int main() {
 			break;
 								
 			case 4:
-				if (testCF(path) != 0) {
+				if (testCFl(path) != 0) {
 					cout << "Enter name the file: ";
 					deleteFile(path);
 					system("pause");
@@ -121,7 +121,38 @@ int main() {
 			break;
 
 			case 5:
+				if (testCFl(path) != 0) {
+					
+					moveFolder(path);
+					system("pause");
+				}
+				else {
+					cout << "The specified path does not exist.\n";
+					system("pause");
+				}
+				break;
+			case 6:
+				if (testCFl(path) != 0) {
 
+					moveFile(path);
+					system("pause");
+				}
+				else {
+					cout << "The specified path does not exist.\n";
+					system("pause");
+				}
+				break;
+			case 7:
+				if (testCFl(path) != 0) {
+
+					renameFolder(path);
+					system("pause");
+				}
+				else {
+					cout << "The specified path does not exist.\n";
+					system("pause");
+				}
+				break;
 
 			default:
 				cout << "Command not found. Try again\n";

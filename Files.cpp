@@ -1,5 +1,5 @@
 #include "Files.h"
-
+#include <fstream>
 //Create file
 /*void createFile(char* a) {
 	//char oldF[256];
@@ -108,7 +108,7 @@ void readFile(char *a) {
 	std::cout << std::endl;
 }
 
-bool testCF(std::string str) {
+bool testCFl(std::string str) {
 	char oldF1[256] = "1.txt";
 	std::string combined = std::string(str) + oldF1;
 	const char* result = combined.c_str();
@@ -152,3 +152,64 @@ bool testCF(std::string str) {
 	}
 	f.close();
 }*/
+
+bool moveFile(std::string& str) {
+	char last;
+	char a = { '/' };
+	char b = { '\\' };
+	std::string oldF1;
+	std::string newF;
+
+	std::cout << "Enter the file name: ";
+	getline(std::cin, oldF1); //Nushna proverka
+	std::string combined = std::string(str) + oldF1;
+	const char* result = combined.c_str();
+
+	std::fstream f;
+	f.open(result, std::ios::in);
+	if (f.is_open()) {
+		f.close();
+		system("pause");
+		
+		std::cout << "Enter the path to move the file to: ";
+		getline(std::cin, newF);
+		last = newF[newF.length() - 1];
+		std::cout << last << std::endl; //del
+		system("pause");
+		std::string combined2 = std::string(newF) + oldF1;
+		const char* result2 = combined2.c_str();
+		//proverka 1
+		if (last != a && last != b) {
+			std::cout << "THE specified path does not exist.\n";
+			system("pause");
+			return 0;
+		}
+		else { //Proverka 2
+			if (testCFl(newF) != 0) {
+				if (str != newF) {
+					MoveFileA(result, result2);
+					if (MoveFileA(result, result2) == 0)
+						std::cout << "File removed: \n" << result2 << std::endl;
+					else
+						std::cout << "File not removed.\n" << std::endl;
+
+				}
+				else
+					std::cout << "File not removed!\n";
+				return 0;
+			}
+			else {
+				std::cout << "The specified path does not exist.\n";
+				system("pause");
+			}
+			return 0;
+		}
+		return 0;
+	}
+	else {
+		f.close();
+		std::cout << "There is no such file!\n";
+		return 0;
+	}
+
+}

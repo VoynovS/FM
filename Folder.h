@@ -15,7 +15,7 @@ void createFolder(std::string& str);
 void deleteFolder(std::string& str);
 
 //Rename the folder 
-void renameFolder();
+bool renameFolder(std::string& str);
 
 //Remove folder
-void moveFolder();
+bool moveFolder(std::string& str);

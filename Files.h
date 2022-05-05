@@ -23,4 +23,6 @@ void readFile(char* a);
 
 //Test create file
 //bool testCF(char* a);
-bool testCF(std::string str);
+bool testCFl(std::string str);
+
+bool moveFile(std::string& str);
