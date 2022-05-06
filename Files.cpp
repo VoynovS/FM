@@ -21,13 +21,14 @@ void createFile(std::string& str) {
 	//const char* result = combined.c_str();
 	std::ofstream f;
 	f.open(combined);
-	f.close();
+	f.close(); //Nujhna proverka
+	std::cout << "File created!\n";
 }
 
 //Delete file
 void deleteFile(std::string& str) {
 	std::cout << "Enter name the file: ";
-	std::string oldF1; //Сделать проверку на наличие файла в папке
+	std::string oldF1; //Nujhna proverka
 	getline(std::cin, oldF1);
 	std::string combined = std::string(str) + oldF1;
 	const char* result = combined.c_str();

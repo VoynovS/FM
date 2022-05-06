@@ -73,9 +73,7 @@ int main() {
 		switch (num) {
 			case 1:
 			if (testCFl(path) != 0) {
-				
 				createFolder(path);
-				
 				system("pause");
 			}
 			else {
@@ -87,7 +85,6 @@ int main() {
 			case 2:
 			if (testCFl(path) != 0) {				
 				createFile(path);
-				cout << "File created!\n";
 				system("pause");
 			}
 			else {
@@ -109,7 +106,6 @@ int main() {
 								
 			case 4:
 				if (testCFl(path) != 0) {
-					
 					deleteFile(path);
 					system("pause");
 				}
@@ -120,8 +116,7 @@ int main() {
 			break;
 
 			case 5:
-				if (testCFl(path) != 0) {
-					
+				if (testCFl(path) != 0) {					
 					moveFolder(path);
 					system("pause");
 				}
@@ -132,7 +127,6 @@ int main() {
 				break;
 			case 6:
 				if (testCFl(path) != 0) {
-
 					moveFile(path);
 					system("pause");
 				}
@@ -143,7 +137,6 @@ int main() {
 				break;
 			case 7:
 				if (testCFl(path) != 0) {
-
 					renameFolder(path);
 					system("pause");
 				}
@@ -154,7 +147,6 @@ int main() {
 				break;
 			case 8:
 				if (testCFl(path) != 0) {
-
 					renameFile(path);
 					system("pause");
 				}
@@ -165,7 +157,6 @@ int main() {
 				break;
 			case 9:
 				if (testCFl(path) != 0) {
-
 					writeFile(path);
 					system("pause");
 				}
@@ -176,7 +167,6 @@ int main() {
 				break;
 			case 10:
 				if (testCFl(path) != 0) {
-
 					readFile(path);
 					system("pause");
 				}
