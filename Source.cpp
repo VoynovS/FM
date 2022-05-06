@@ -64,13 +64,18 @@ int main() {
 				continue;
 			}
 		}
+		else 
+			continue;
+
+		
+			
 
 		switch (num) {
 			case 1:
 			if (testCFl(path) != 0) {
-				cout << "Enter name the folder: ";
+				
 				createFolder(path);
-				cout << "Folder created!\n";
+				
 				system("pause");
 			}
 			else {
@@ -93,9 +98,7 @@ int main() {
 
 			case 3:
 			if (testCFl(path) != 0) {
-				cout << "Enter the folder name: ";
 				deleteFolder(path);
-				cout << "Folder deleted!\n"; //Proverit'
 				system("pause");
 			}
 			else {

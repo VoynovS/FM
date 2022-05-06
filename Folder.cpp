@@ -20,7 +20,6 @@ bool testCFo(std::string str) {
 		return true;
 	}
 	else {
-		//std::cout << "There is no such folder!\n";
 		f.close();
 		remove(result);
 		return false;
@@ -28,29 +27,45 @@ bool testCFo(std::string str) {
 }
 
 
-//Create the folder
-/*void createFolder(char* a) {
-
-	std::string str;
-	getline(std::cin, str);
-	std::string combined = std::string(a) + str;
-	CreateDirectoryA(combined.c_str(), NULL);
-}*/
-
 void createFolder(std::string& str) {
-
+	std::cout << "Enter name the folder: ";
 	std::string str1;
 	getline(std::cin, str1);
 	std::string combined = std::string(str) + str1;
+	const char* result = combined.c_str();
 	CreateDirectoryA(combined.c_str(), NULL);
+	std::ofstream fO;
+	fO.open(result);
+	if (fO.is_open()) {
+		fO.close();
+		std::cout << "Folder created!\n";
+	}
+	else {
+		fO.close();
+		std::cout << "Folder not created!";
+	}
 }
-
 //Delete the folder
 void deleteFolder(std::string& str) {
+	std::cout << "Enter the folder name: ";
 	std::string str1;
 	getline(std::cin, str1);
 	std::string combined = std::string(str) + str1;
+	const char* result = combined.c_str();
 	RemoveDirectoryA(combined.c_str());
+	std::ofstream fO;
+	fO.open(result);
+	if (fO.is_open()) {
+		fO.close();
+		std::cout << "Folder not deleted!\n";
+		std::cout << "There is no such folder or there are files inside the folder.\n";
+		std::cout << "You can delete a folder if it is empty\n";
+		system("pause");
+	}
+	else {
+		fO.close();
+		std::cout << "Folder deleted!\n";
+	}
 }
 
 //Rename the folder 
@@ -71,9 +86,9 @@ bool renameFolder(std::string& str) {
 	std::string combined2 = std::string(str) + newF1;
 	const char* result2 = combined2.c_str();
 	if (rename(result, result2) == 0)
-		std::cout << "Folder renamed!" << std::endl;
+		std::cout << "Folder renamed!\n" << std::endl;
 	else
-		std::cout << "Folder not renamed!" << std::endl;
+		std::cout << "Folder not renamed!\n" << std::endl;
 	return 0;
 }
 
@@ -84,21 +99,18 @@ bool moveFolder(std::string& str) {
 	char b = { '\\' };
 	std::string oldF1;
 	std::string newF;
-
-	std::cout << "Enter the folder name: ";
-	getline(std::cin, oldF1); //Nushna proverka
 	std::string combined = std::string(str) + oldF1;
 	const char* result = combined.c_str();
+	std::cout << "Enter the folder name: ";
+	getline(std::cin, oldF1); //Nushna proverka
 	if (testCFo(combined) == 0) {
 		std::cout << "There is no such folder!\n";
 		system("pause");
 		return 0;
 	}
-
 	std::cout << "Enter the path to move the folder to: ";
 	getline(std::cin, newF);
 	last = newF[newF.length() - 1];
-	std::cout << last << std::endl; //del
 	system("pause");
 
 	std::string combined2 = std::string(newF) + oldF1;
@@ -116,11 +128,11 @@ bool moveFolder(std::string& str) {
 				if (MoveFileA(result, result2) == 0)
 					std::cout << "Folder removed: " << result2 << std::endl;
 				else
-					std::cout << "Folder not removed." << std::endl;
+					std::cout << "Folder not removed.\n" << std::endl;
 
 			}
 			else
-				std::cout << "Folder not removed!";
+				std::cout << "Folder not removed!\n";
 			return 0;
 		}
 		else {
