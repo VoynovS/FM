@@ -7,15 +7,14 @@
 
 
 
-//Create the folder
+//Creating a folder
 void createFolder(std::string& str);
-//void createFolder(char* a);
 
-//Delete the folder
+//Deleting a folder
 void deleteFolder(std::string& str);
 
-//Rename the folder 
+//Renaming a folder 
 bool renameFolder(std::string& str);
 
-//Remove folder
+//Removing a folder
 bool moveFolder(std::string& str);

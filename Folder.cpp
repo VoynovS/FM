@@ -14,7 +14,7 @@ bool testCFo(std::string str) {
 	std::ofstream f;
 	f.open(combined);
 	if (f.is_open()) {
-		system("pause");
+		
 		f.close();
 		remove(result);
 		return true;
@@ -28,33 +28,40 @@ bool testCFo(std::string str) {
 
 
 void createFolder(std::string& str) {
+	char oldF1[256] = "/1.txt";
 	std::cout << "Enter name the folder: ";
 	std::string str1;
 	getline(std::cin, str1);
 	std::string combined = std::string(str) + str1;
 	const char* result = combined.c_str();
 	CreateDirectoryA(combined.c_str(), NULL);
+	std::string combined2 = std::string(str) + str1 + oldF1;
+	std::cout << combined2 << std::endl;
+	const char* result2 = combined2.c_str();
 	std::ofstream fO;
-	fO.open(result);
+	fO.open(combined2);
 	if (fO.is_open()) {
 		fO.close();
 		std::cout << "Folder created!\n";
 	}
 	else {
 		fO.close();
-		std::cout << "Folder not created!";
+		std::cout << "Folder not created!\n";
 	}
 }
 //Delete the folder
 void deleteFolder(std::string& str) {
+	char oldF1[256] = "/1.txt";
 	std::cout << "Enter the folder name: ";
 	std::string str1;
 	getline(std::cin, str1);
 	std::string combined = std::string(str) + str1;
 	const char* result = combined.c_str();
 	RemoveDirectoryA(combined.c_str());
+	std::string combined2 = std::string(str) + str1 + oldF1;
+	const char* result2 = combined2.c_str();
 	std::ofstream fO;
-	fO.open(result);
+	fO.open(result2);
 	if (fO.is_open()) {
 		fO.close();
 		std::cout << "Folder not deleted!\n";
@@ -99,10 +106,11 @@ bool moveFolder(std::string& str) {
 	char b = { '\\' };
 	std::string oldF1;
 	std::string newF;
+	std::cout << "Enter the folder name: ";
+	getline(std::cin, oldF1);
 	std::string combined = std::string(str) + oldF1;
 	const char* result = combined.c_str();
-	std::cout << "Enter the folder name: ";
-	getline(std::cin, oldF1); //Nushna proverka
+	 //Nushna proverka
 	if (testCFo(combined) == 0) {
 		std::cout << "There is no such folder!\n";
 		system("pause");
@@ -111,7 +119,7 @@ bool moveFolder(std::string& str) {
 	std::cout << "Enter the path to move the folder to: ";
 	getline(std::cin, newF);
 	last = newF[newF.length() - 1];
-	system("pause");
+	
 
 	std::string combined2 = std::string(newF) + oldF1;
 	const char* result2 = combined2.c_str();

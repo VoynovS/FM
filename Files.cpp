@@ -1,28 +1,25 @@
 #include "Files.h"
 #include <fstream>
-//Create file
-/*void createFile(char* a) {
-	//char oldF[256];
-	char oldF1[256];
-	//std::cin >> oldF;
-	std::cin >> oldF1;
-	std::string combined = std::string(a) + oldF1;
-	const char* result = combined.c_str();
-	std::ofstream f;
-	f.open(result);
-	f.close();
-}*/
+
 
 void createFile(std::string& str) {
 	std::cout << "Enter name the file: ";
 	std::string oldF1;
 	getline(std::cin, oldF1);	
 	std::string combined = std::string(str) + oldF1;
-	//const char* result = combined.c_str();
+	const char* result = combined.c_str();
 	std::ofstream f;
 	f.open(combined);
-	f.close(); //Nujhna proverka
-	std::cout << "File created!\n";
+	if (f.is_open()) {
+		f.close();
+		std::cout << "File created!\n";
+	}
+	else {
+		f.close(); 
+		std::cout << "File not created!\n";
+
+	}
+	
 }
 
 //Delete file
@@ -53,7 +50,6 @@ void renameFile(std::string str){
 	f.open(result);
 	if (f.is_open()) {
 		f.close();
-		system("pause");
 		std::string newF1;
 		std::cout << "Enter a new file name: ";
 		getline(std::cin, newF1);
@@ -92,6 +88,7 @@ void writeFile(std::string str) {
 		getline(std::cin, str);
 		wF1 << str; 
 		wF1 << std::endl;
+		std::cout << "Changes have been made\n";
 		wF.close();
 	}
 	else {
@@ -134,7 +131,6 @@ bool testCFl(std::string str) {
 	if (f.is_open()) {
 		std::cout << "You are in the folder: " << str << std::endl;
 		f.close();
-		system("pause");
 		remove(result);
 		return true;
 	}
@@ -162,13 +158,9 @@ bool moveFile(std::string& str) {
 	f.open(result, std::ios::in);
 	if (f.is_open()) {
 		f.close();
-		system("pause");
-		
 		std::cout << "Enter the path to move the file to: ";
 		getline(std::cin, newF);
 		last = newF[newF.length() - 1];
-		std::cout << last << std::endl; //del
-		system("pause");
 		std::string combined2 = std::string(newF) + oldF1;
 		const char* result2 = combined2.c_str();
 		//proverka 1

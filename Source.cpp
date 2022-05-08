@@ -2,19 +2,18 @@
 #include <windows.h>
 #include <string>
 #include "Folder.h"
-#include "Test.h"
 #include "Files.h"
-#include "Check.h"
+
 using namespace std;
 
 int main() {
 	
 	cout << "Welcome to the File Manager.\nRules for using the file manager:\n";
-	cout << "1. To get started, write down the path to the folder.\n";
-	cout << "2. Syntax for writing a path using an example: c:/folder/ and name.txt\n";
-	cout << "3. Enter the command to execute: add folder/file, delete folder/file, \nrename folder/file,  move folder/file, reading a file, writing to a file.\n";
+	cout << "1. To get started, specify the path to the folder.\n";
+	cout << "2. Syntax  writing a path: c:/folder/ and name.txt\n";
+	cout << "3. Enter the command to run from 1 to 11:\n";
 	cout << "4. Follow the on-screen instructions.\n";
-	cout << "5. To exit, enter the command : exit.\n";
+	
 	system("pause");
 		
 	int num;
@@ -57,7 +56,7 @@ int main() {
 			cout << "Enter path to folder:\n";
 			getline(cin, path);
 			last = path[path.length() - 1];
-			system("pause");
+			
 			if (last != a && last != b) {
 				cout << "THE specified path does not exist.\n";
 				system("pause");

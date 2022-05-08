@@ -5,14 +5,13 @@
 #include <fstream>
 
 
-//Create File
-//void createFile(char* a);
+//Creating a file
 void createFile(std::string& str);
 
-//Delete file
+//Deleting a file
 void deleteFile(std::string& str);
 
-//Move file
+//Renaming a file
 void renameFile(std::string str);
 
 //Writing to a file
@@ -21,8 +20,8 @@ void writeFile(std::string str);
 //Reading from a file
 void readFile(std::string str);
 
-//Test create file
-//bool testCF(char* a);
+//Test creating a file
 bool testCFl(std::string str);
 
+//Moving a file
 bool moveFile(std::string& str);
